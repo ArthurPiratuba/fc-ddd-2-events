@@ -1,3 +1,5 @@
+import EventInterface from "../../@shared/event/event.interface";
+import CustomerCreated from "../event/customer-created.event";
 import Address from "../value-object/address";
 
 export default class Customer {
@@ -6,11 +8,13 @@ export default class Customer {
   private _address!: Address;
   private _active: boolean = false;
   private _rewardPoints: number = 0;
+  events: Set<EventInterface> = new Set();
 
   constructor(id: string, name: string) {
     this._id = id;
     this._name = name;
     this.validate();
+    this.addEvent(new CustomerCreated(this));
   }
 
   get id(): string {
@@ -34,6 +38,10 @@ export default class Customer {
     }
   }
 
+  addEvent(event: EventInterface) {
+    this.events.add(event);
+  }
+
   changeName(name: string) {
     this._name = name;
     this.validate();
@@ -42,7 +50,7 @@ export default class Customer {
   get Address(): Address {
     return this._address;
   }
-  
+
   changeAddress(address: Address) {
     this._address = address;
   }
