@@ -18,3 +18,5 @@ Boa sorte.
 
 ## Principais lições aprendidas
 - toString() funciona de forma implicita quando utilizo um objeto dentro de uma interpolação
+- Domain events na prática
+- Container de eventos
