@@ -1,4 +1,5 @@
-import EventInterface from "../../@shared/event/event.interface";
+import EventInterface from "../../@shared/event/domain.event";
+import CustomerAddressChanged from "../event/customer-address-changed.event";
 import CustomerCreated from "../event/customer-created.event";
 import Address from "../value-object/address";
 
@@ -29,6 +30,10 @@ export default class Customer {
     return this._rewardPoints;
   }
 
+  get address(): Address {
+    return this._address;
+  }
+
   validate() {
     if (this._id.length === 0) {
       throw new Error("Id is required");
@@ -47,12 +52,10 @@ export default class Customer {
     this.validate();
   }
 
-  get Address(): Address {
-    return this._address;
-  }
 
   changeAddress(address: Address) {
     this._address = address;
+    this.addEvent(new CustomerAddressChanged(this));
   }
 
   isActive(): boolean {

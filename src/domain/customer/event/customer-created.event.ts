@@ -1,11 +1,3 @@
-import EventInterface from "../../@shared/event/event.interface";
+import DomainEvent from "../../@shared/event/domain.event";
 
-export default class CustomerCreated implements EventInterface {
-  readonly dataTimeOccurred: Date;
-  readonly eventData: any;
-
-  constructor(eventData: any) {
-    this.dataTimeOccurred = new Date();
-    this.eventData = eventData;
-  }
-}
+export default class CustomerCreated extends DomainEvent { }

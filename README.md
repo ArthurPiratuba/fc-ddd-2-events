@@ -17,3 +17,4 @@ Boa sorte.
 * A linguagem de programação para este desafio é TypeScript
 
 ## Principais lições aprendidas
+- toString() funciona de forma implicita quando utilizo um objeto dentro de uma interpolação
